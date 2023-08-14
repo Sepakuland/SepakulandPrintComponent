@@ -1,0 +1,10 @@
+{
+  "name": "@SepakulandPrint",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "files": [
+    "dist/",
+    "src/PrintGrid.js",
+    "src/PrintGridEmpty.js"
+  ]
+}
