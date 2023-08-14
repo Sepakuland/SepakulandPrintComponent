@@ -1,5 +1,5 @@
 {
-  "name": "SepakulandPrint",
+  "name": "SepakulandComponentPrint",
   "version": "1.1.0",
   "main": "dist/index.js",
   "files": [
