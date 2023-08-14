@@ -1,9 +1,9 @@
 {
   "scripts": {
-    "build": "babel ./src -d ./dist && cpy ./src/style.css ./dist && cpy ./src/default-ocean-blue.css ./dist && cpy ./src/default-main-dark.css ./dist"
+    "build": "babel ./src -d ./dist && cpy ./style.css ./dist && cpy ./default-ocean-blue.css ./dist && cpy ./default-main-dark.css ./dist"
   },
   "name": "sepakuland-component-print",
-  "version": "1.3.0",
+  "version": "1.3.2",
   "main": "dist/index.js",
   "files": [
     "dist/",
