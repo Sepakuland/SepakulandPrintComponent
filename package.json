@@ -3,7 +3,7 @@
     "build": "babel ./src -d ./dist && npx cpy ./src/style.css ./dist && npx cpy ./src/default-ocean-blue.css ./dist && npx cpy ./src/default-main-dark.css ./dist && npx cpy ./src/ar.json ./dist && npx cpy ./src/fa-IR.json ./dist && npx cpy ./src/brush.png ./dist"
   },
   "name": "sepakuland-component-print",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "main": "dist/index.js",
   "files": [
     "dist/",

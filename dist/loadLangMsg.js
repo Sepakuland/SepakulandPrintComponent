@@ -12,7 +12,7 @@ var _caGeneric = _interopRequireDefault(
 var _caGregorian = _interopRequireDefault(
   require("cldr-dates-full/main/fa/ca-gregorian.json")
 );
-var _ar = _interopRequireDefault(require("./src/ar.json"));
+var _ar = _interopRequireDefault(require("../src/ar.json"));
 var _caGeneric2 = _interopRequireDefault(
   require("cldr-dates-full/main/ar/ca-generic.json")
 );
