@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "babel ./src -d ./dist"
+    "build": "babel ./src -d ./dist && cpy ./src/style.css ./dist && cpy ./src/default-ocean-blue.css ./dist && cpy ./src/default-main-dark.css ./dist"
   },
   "name": "sepakuland-component-print",
   "version": "1.2.0",
@@ -8,7 +8,12 @@
   "files": [
     "dist/",
     "src/PrintGrid.js",
-    "src/PrintGridEmpty.js"
+    "src/PrintGridEmpty.js",
+    "src/getLangDate.js",
+    "src/loadLangMsg.js",
+    "src/default-main-dark.css",
+    "src/default-ocean-blue.css",
+    "src/style.css"
   ],
   "devDependencies": {
     "@babel/cli": "^7.22.10",
