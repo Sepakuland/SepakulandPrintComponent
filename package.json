@@ -3,7 +3,7 @@
     "build": "babel ./src -d ./dist && npx cpy ./src/style.css ./dist && npx cpy ./src/default-ocean-blue.css ./dist && npx cpy ./src/default-main-dark.css ./dist"
   },
   "name": "sepakuland-component-print",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "main": "dist/index.js",
   "files": [
     "dist/",
@@ -13,7 +13,10 @@
     "src/loadLangMsg.js",
     "src/default-main-dark.css",
     "src/default-ocean-blue.css",
-    "src/style.css"
+    "src/style.css",
+    "src/ar.json",
+    "src/brush.png",
+    "src/fa-IR.json"
   ],
   "devDependencies": {
     "@babel/cli": "^7.22.10",
