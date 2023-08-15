@@ -11,7 +11,6 @@ import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import { LocalizationProvider } from "@progress/kendo-react-intl";
 import { getLangDate } from "./getLangDate";
 import { useSearchParams } from "react-router-dom";
-// import '../../components/RKGrid/style.css'
 
 const Print = ({
   printData,
@@ -249,3 +248,5 @@ const Print = ({
   );
 };
 export default Print;
+export { default as PrintGrid } from './PrintGrid';
+export { default as PrintGridEmpty } from './PrintGridEmpty';

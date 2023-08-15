@@ -18,6 +18,11 @@
     "src/brush.png",
     "src/fa-IR.json"
   ],
+  "exports": {
+    ".": "./src/index.js",
+    "./PrintGrid": "./src/PrintGrid.js",
+    "./PrintGridEmpty": "./src/PrintGridEmpty.js"
+  },
   "devDependencies": {
     "@babel/cli": "^7.22.10",
     "@babel/core": "^7.22.10",
