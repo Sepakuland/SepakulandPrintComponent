@@ -19,9 +19,9 @@
     "src/fa-IR.json"
   ],
   "exports": {
-    ".": "./src/index.js",
-    "./PrintGrid": "./src/PrintGrid.js",
-    "./PrintGridEmpty": "./src/PrintGridEmpty.js"
+    ".": "./dist/index.js",
+    "./PrintGrid": "./dist/PrintGrid.js",
+    "./PrintGridEmpty": "./dist/PrintGridEmpty.js"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.10",
