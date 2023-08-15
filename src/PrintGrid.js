@@ -1,12 +1,11 @@
 import React, { useEffect, useState ,useRef} from 'react'
-import '../RKGrid/default-main-dark.css'
-import '../RKGrid/default-ocean-blue.css'
-import '../RKGrid/style.css'
-import {loadLangMsg} from '../../utils/loadLangMsg'
+import './default-main-dark.css'
+import './default-ocean-blue.css'
+import './style.css'
+import {loadLangMsg} from './loadLangMsg'
 import { useTranslation } from 'react-i18next';
 import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import { LocalizationProvider } from "@progress/kendo-react-intl";
-import '../../components/RKGrid/style.css'
 
 const PrintGrid = ({printData,columnList}) => {
 

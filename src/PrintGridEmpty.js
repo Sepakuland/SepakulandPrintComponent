@@ -1,18 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react'
-import '../RKGrid/default-main-dark.css'
-import '../RKGrid/default-ocean-blue.css'
-import '../RKGrid/style.css'
+import './default-main-dark.css'
+import './default-ocean-blue.css'
+import './style.css'
 import { loadLangMsg } from '../../utils/loadLangMsg'
-import ZoomOutIcon from '@mui/icons-material/ZoomOut';
-import ZoomInIcon from '@mui/icons-material/ZoomIn';
-import { Button } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
 import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import { LocalizationProvider } from "@progress/kendo-react-intl";
-import { getLangDate } from "../../utils/getLangDate";
-import { useSearchParams } from 'react-router-dom';
-import '../../components/RKGrid/style.css'
+
+
 
 const PrintGrid = ({ printData, columnList }) => {
 
