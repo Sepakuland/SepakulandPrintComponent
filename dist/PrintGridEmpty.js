@@ -9,7 +9,7 @@ var _react = _interopRequireWildcard(require("react"));
 require("./default-main-dark.css");
 require("./default-ocean-blue.css");
 require("./style.css");
-var _loadLangMsg = require("../../utils/loadLangMsg");
+var _loadLangMsg = require("./loadLangMsg");
 var _reactI18next = require("react-i18next");
 var _kendoReactGrid = require("@progress/kendo-react-grid");
 var _kendoReactIntl = require("@progress/kendo-react-intl");
@@ -94,10 +94,10 @@ var PrintGrid = function PrintGrid(_ref) {
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "grid"
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "print-grid ".concat(i18n.dir() === 'ltr' ? 'ltr-p' : ''),
+    className: "print-grid ".concat(i18n.dir() === "ltr" ? "ltr-p" : ""),
     ref: gridContainer
   }, /*#__PURE__*/_react["default"].createElement(_kendoReactIntl.LocalizationProvider, {
-    language: "".concat(i18n.language === 'fa' ? 'fa-IR' : i18n.language === 'ar' ? 'ar' : 'en')
+    language: "".concat(i18n.language === "fa" ? "fa-IR" : i18n.language === "ar" ? "ar" : "en")
   }, /*#__PURE__*/_react["default"].createElement(_kendoReactGrid.Grid, {
     total: printData.length,
     take: printData.length,
@@ -106,7 +106,7 @@ var PrintGrid = function PrintGrid(_ref) {
     sortable: false,
     filterable: false,
     reorderable: false,
-    className: "main-grid ".concat(i18n.language === 'en' ? 'ltr' : 'rtl')
+    className: "main-grid ".concat(i18n.language === "en" ? "ltr" : "rtl")
   }, tempColumn === null || tempColumn === void 0 ? void 0 : tempColumn.map(function (column, index) {
     var _column$children;
     if (!(column !== null && column !== void 0 && (_column$children = column.children) !== null && _column$children !== void 0 && _column$children.length)) {

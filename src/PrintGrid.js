@@ -1,105 +1,122 @@
-import React, { useEffect, useState ,useRef} from 'react'
-import './default-main-dark.css'
-import './default-ocean-blue.css'
-import './style.css'
-import {loadLangMsg} from './loadLangMsg'
-import { useTranslation } from 'react-i18next';
+import React, { useEffect, useState, useRef } from "react";
+import "./default-main-dark.css";
+import "./default-ocean-blue.css";
+import "./style.css";
+import { loadLangMsg } from "./loadLangMsg";
+import { useTranslation } from "react-i18next";
 import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import { LocalizationProvider } from "@progress/kendo-react-intl";
 
-const PrintGrid = ({printData,columnList}) => {
+export default function PrintGrid({ printData, columnList }) {
+  const { t, i18n } = useTranslation();
+  const [gridW, setGridW] = useState();
+  const gridContainer = useRef();
 
+  let tempColumn = columnList;
 
-    const { t, i18n } = useTranslation();
-    const [gridW, setGridW] = useState();
-    const gridContainer=useRef()
+  let pObj = {};
 
-    let tempColumn=columnList
+  tempColumn?.forEach((item) => {
+    pObj[item.field] = true;
+  });
 
+  const [fields, setFields] = useState(pObj);
 
-    let pObj={}
+  useEffect(() => {
+    loadLangMsg(i18n.language);
+  }, [i18n.language]);
 
-    tempColumn?.forEach((item)=>{
-        pObj[item.field]=true
-    })
-
-    const [fields,setFields]=useState(pObj)
-
-
-    useEffect(()=>{
-        loadLangMsg(i18n.language)
-    },[i18n.language])
-
-
-    useEffect(() => {
-        window.addEventListener("resize", handleResize);
-        return ()=>{
-            window.removeEventListener("resize", handleResize);
-        }
-    }, []);
-
-    function timeout(delay) {
-        return new Promise( res => setTimeout(res, delay) );
-    }
-
-    const handleResize = async () => {
-        await timeout(500);
-        setGridW(gridContainer?.current?.offsetWidth-20)
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
     };
+  }, []);
 
-    useEffect(()=>{
-        setGridW(gridContainer?.current?.offsetWidth-20)
-    },[])
+  function timeout(delay) {
+    return new Promise((res) => setTimeout(res, delay));
+  }
 
+  const handleResize = async () => {
+    await timeout(500);
+    setGridW(gridContainer?.current?.offsetWidth - 20);
+  };
 
-    return (
+  useEffect(() => {
+    setGridW(gridContainer?.current?.offsetWidth - 20);
+  }, []);
 
-        <div className='p-3 print-page'>
-            <div className='row justify-content-center'>
-                <div className='col-lg-11 col-md-12 col-sm-12 col-12'>
-                    <div
-                        style={{ direction: i18n.dir() }}>
-
-                        <div className='grid' >
-                            <div className={`print-grid ${i18n.dir()==='ltr'?'ltr-p':''}`} ref={gridContainer}>
-
-                                <LocalizationProvider
-                                    language={`${i18n.language === 'fa' ? 'fa-IR' : i18n.language === 'ar' ? 'ar' : 'en'}`}>
-                                    <Grid
-                                        total={printData.length}
-                                        take={printData.length}
-                                        data={printData}
-                                        pageable={false}
-                                        sortable={false}
-                                        filterable={false}
-                                        reorderable={false}
-                                        className={`main-grid ${i18n.language==='en'?'ltr':'rtl'}`}
-                                    >
-                                        {tempColumn?.map((column,index)=>{
-                                            if (!column?.children?.length){
-                                                return fields[column.field]&&<GridColumn {...column} key={index} title={t(`${column.name}`)} />
-
-                                            }else{
-                                                return (fields[column.field]&&<GridColumn key={index} {...column} title={t(`${column.name}`)} >
-                                                    {column?.children.map((children,indexC)=>{
-                                                            return <GridColumn {...children} key={indexC} title={t(`${children.name}`)} />
-                                                        }
-                                                    )}
-                                                </GridColumn>)
-                                            }
-                                        })}
-
-                                    </Grid>
-                                </LocalizationProvider>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <div className="p-3 print-page">
+      <div className="row justify-content-center">
+        <div className="col-lg-11 col-md-12 col-sm-12 col-12">
+          <div style={{ direction: i18n.dir() }}>
+            <div className="grid">
+              <div
+                className={`print-grid ${i18n.dir() === "ltr" ? "ltr-p" : ""}`}
+                ref={gridContainer}
+              >
+                <LocalizationProvider
+                  language={`${
+                    i18n.language === "fa"
+                      ? "fa-IR"
+                      : i18n.language === "ar"
+                      ? "ar"
+                      : "en"
+                  }`}
+                >
+                  <Grid
+                    total={printData.length}
+                    take={printData.length}
+                    data={printData}
+                    pageable={false}
+                    sortable={false}
+                    filterable={false}
+                    reorderable={false}
+                    className={`main-grid ${
+                      i18n.language === "en" ? "ltr" : "rtl"
+                    }`}
+                  >
+                    {tempColumn?.map((column, index) => {
+                      if (!column?.children?.length) {
+                        return (
+                          fields[column.field] && (
+                            <GridColumn
+                              {...column}
+                              key={index}
+                              title={t(`${column.name}`)}
+                            />
+                          )
+                        );
+                      } else {
+                        return (
+                          fields[column.field] && (
+                            <GridColumn
+                              key={index}
+                              {...column}
+                              title={t(`${column.name}`)}
+                            >
+                              {column?.children.map((children, indexC) => {
+                                return (
+                                  <GridColumn
+                                    {...children}
+                                    key={indexC}
+                                    title={t(`${children.name}`)}
+                                  />
+                                );
+                              })}
+                            </GridColumn>
+                          )
+                        );
+                      }
+                    })}
+                  </Grid>
+                </LocalizationProvider>
+              </div>
             </div>
+          </div>
         </div>
-    )
+      </div>
+    </div>
+  );
 }
-export default PrintGrid
-
-
-

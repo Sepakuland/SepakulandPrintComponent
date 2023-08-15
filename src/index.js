@@ -248,5 +248,5 @@ const Print = ({
   );
 };
 export default Print;
-export { default as PrintGrid } from "../dist/PrintGrid";
-export { default as PrintGridEmpty } from "../dist/PrintGridEmpty";
+export { default as PrintGrid } from "./PrintGrid";
+export { default as PrintGridEmpty } from "./PrintGridEmpty";
