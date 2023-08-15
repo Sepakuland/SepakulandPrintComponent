@@ -3,7 +3,7 @@
     "build": "babel ./src -d ./dist && npx copyfiles -f ./src/*.css ./dist && npx copyfiles -f ./src/*.json ./dist && npx copyfiles -f ./src/*.png ./dist"
   },
   "name": "sepakuland-component-print",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "main": "dist/index.js",
   "files": [
     "dist/",
