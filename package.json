@@ -19,7 +19,6 @@
     "src/fa-IR.json"
   ],
   "exports": {
-    ".": "./dist/index.js",
     "./PrintGrid": "./dist/PrintGrid.js",
     "./PrintGridEmpty": "./dist/PrintGridEmpty.js"
   },
