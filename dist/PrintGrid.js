@@ -4,13 +4,12 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports["default"] = void 0;
+exports["default"] = PrintGrid;
 var _react = _interopRequireWildcard(require("react"));
 require("./default-main-dark.css");
 require("./default-ocean-blue.css");
 require("./style.css");
 var _loadLangMsg = require("./loadLangMsg");
-var _reactI18next = require("react-i18next");
 var _kendoReactGrid = require("@progress/kendo-react-grid");
 var _kendoReactIntl = require("@progress/kendo-react-intl");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -25,12 +24,12 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
-var PrintGrid = function PrintGrid(_ref) {
+function PrintGrid(_ref) {
   var printData = _ref.printData,
-    columnList = _ref.columnList;
-  var _useTranslation = (0, _reactI18next.useTranslation)(),
-    t = _useTranslation.t,
-    i18n = _useTranslation.i18n;
+    columnList = _ref.columnList,
+    t = _ref.t,
+    direction = _ref.direction,
+    language = _ref.language;
   var _useState = (0, _react.useState)(),
     _useState2 = _slicedToArray(_useState, 2),
     gridW = _useState2[0],
@@ -46,8 +45,8 @@ var PrintGrid = function PrintGrid(_ref) {
     fields = _useState4[0],
     setFields = _useState4[1];
   (0, _react.useEffect)(function () {
-    (0, _loadLangMsg.loadLangMsg)(i18n.language);
-  }, [i18n.language]);
+    (0, _loadLangMsg.loadLangMsg)(language);
+  }, [language]);
   (0, _react.useEffect)(function () {
     window.addEventListener("resize", handleResize);
     return function () {
@@ -91,15 +90,15 @@ var PrintGrid = function PrintGrid(_ref) {
     className: "col-lg-11 col-md-12 col-sm-12 col-12"
   }, /*#__PURE__*/_react["default"].createElement("div", {
     style: {
-      direction: i18n.dir()
+      direction: direction
     }
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: "grid"
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: "print-grid ".concat(i18n.dir() === "ltr" ? "ltr-p" : ""),
+    className: "print-grid ".concat(direction === "ltr" ? "ltr-p" : ""),
     ref: gridContainer
   }, /*#__PURE__*/_react["default"].createElement(_kendoReactIntl.LocalizationProvider, {
-    language: "".concat(i18n.language === "fa" ? "fa-IR" : i18n.language === "ar" ? "ar" : "en")
+    language: "".concat(language === "fa" ? "fa-IR" : language === "ar" ? "ar" : "en")
   }, /*#__PURE__*/_react["default"].createElement(_kendoReactGrid.Grid, {
     total: printData.length,
     take: printData.length,
@@ -108,7 +107,7 @@ var PrintGrid = function PrintGrid(_ref) {
     sortable: false,
     filterable: false,
     reorderable: false,
-    className: "main-grid ".concat(i18n.language === "en" ? "ltr" : "rtl")
+    className: "main-grid ".concat(language === "en" ? "ltr" : "rtl")
   }, tempColumn === null || tempColumn === void 0 ? void 0 : tempColumn.map(function (column, index) {
     var _column$children;
     if (!(column !== null && column !== void 0 && (_column$children = column.children) !== null && _column$children !== void 0 && _column$children.length)) {
@@ -129,6 +128,4 @@ var PrintGrid = function PrintGrid(_ref) {
       }));
     }
   })))))))));
-};
-var _default = PrintGrid;
-exports["default"] = _default;
+}

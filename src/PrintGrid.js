@@ -3,12 +3,10 @@ import "./default-main-dark.css";
 import "./default-ocean-blue.css";
 import "./style.css";
 import { loadLangMsg } from "./loadLangMsg";
-import { useTranslation } from "react-i18next";
 import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import { LocalizationProvider } from "@progress/kendo-react-intl";
 
-export default function PrintGrid({ printData, columnList }) {
-  const { t, i18n } = useTranslation();
+export default function PrintGrid({ printData, columnList,t,direction,language }) {
   const [gridW, setGridW] = useState();
   const gridContainer = useRef();
 
@@ -23,8 +21,8 @@ export default function PrintGrid({ printData, columnList }) {
   const [fields, setFields] = useState(pObj);
 
   useEffect(() => {
-    loadLangMsg(i18n.language);
-  }, [i18n.language]);
+    loadLangMsg(language);
+  }, [language]);
 
   useEffect(() => {
     window.addEventListener("resize", handleResize);
@@ -50,17 +48,17 @@ export default function PrintGrid({ printData, columnList }) {
     <div className="p-3 print-page">
       <div className="row justify-content-center">
         <div className="col-lg-11 col-md-12 col-sm-12 col-12">
-          <div style={{ direction: i18n.dir() }}>
+          <div style={{ direction: direction }}>
             <div className="grid">
               <div
-                className={`print-grid ${i18n.dir() === "ltr" ? "ltr-p" : ""}`}
+                className={`print-grid ${direction === "ltr" ? "ltr-p" : ""}`}
                 ref={gridContainer}
               >
                 <LocalizationProvider
                   language={`${
-                    i18n.language === "fa"
+                    language === "fa"
                       ? "fa-IR"
-                      : i18n.language === "ar"
+                      : language === "ar"
                       ? "ar"
                       : "en"
                   }`}
@@ -74,7 +72,7 @@ export default function PrintGrid({ printData, columnList }) {
                     filterable={false}
                     reorderable={false}
                     className={`main-grid ${
-                      i18n.language === "en" ? "ltr" : "rtl"
+                      language === "en" ? "ltr" : "rtl"
                     }`}
                   >
                     {tempColumn?.map((column, index) => {

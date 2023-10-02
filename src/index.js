@@ -6,7 +6,6 @@ import { loadLangMsg } from "./loadLangMsg";
 import ZoomOutIcon from "@mui/icons-material/ZoomOut";
 import ZoomInIcon from "@mui/icons-material/ZoomIn";
 import { Button } from "@mui/material";
-import { useTranslation } from "react-i18next";
 import { Grid, GridColumn } from "@progress/kendo-react-grid";
 import { LocalizationProvider } from "@progress/kendo-react-intl";
 import { getLangDate } from "./getLangDate";
@@ -20,6 +19,9 @@ const Print = ({
   subTitle,
   children,
   showZoom = true,
+  t,
+  direction,
+  language
 }) => {
   const [fontSize, setFontSize] = useState(12);
   console.log("fontSize...", fontSize);
@@ -27,7 +29,6 @@ const Print = ({
   const [searchParams] = useSearchParams();
   const gridId = searchParams.get("id");
 
-  const { t, i18n } = useTranslation();
   const [gridW, setGridW] = useState();
   const printSetting = JSON.parse(localStorage.getItem(`print_${gridId}`));
   const [autoWidth, setAutoWidth] = useState("75px");
@@ -65,8 +66,8 @@ const Print = ({
   // },[gridW])
 
   useEffect(() => {
-    loadLangMsg(i18n.language);
-  }, [i18n.language]);
+    loadLangMsg(language);
+  }, [language]);
   useEffect(() => {
     setData(printData);
   }, [printData]);
@@ -104,7 +105,7 @@ const Print = ({
     <div className="p-3 print-page">
       <div className="row justify-content-center">
         <div className="col-lg-11 col-md-12 col-sm-12 col-12">
-          <div style={{ direction: i18n.dir() }}>
+          <div style={{ direction:direction }}>
             <style jsx global>{`
               ${showZoom
                 ? `tbody,tfoot
@@ -159,7 +160,7 @@ const Print = ({
                           <p>
                             {" "}
                             {t("تاریخ چاپ: ")}
-                            {getLangDate(i18n.language, new Date())}
+                            {getLangDate(language, new Date())}
                           </p>
                         </div>
                       </div>
@@ -172,15 +173,15 @@ const Print = ({
                 <div className="grid">
                   <div
                     className={`print-grid ${
-                      i18n.dir() === "ltr" ? "ltr-p" : ""
+                      direction === "ltr" ? "ltr-p" : ""
                     }`}
                     ref={gridContainer}
                   >
                     <LocalizationProvider
                       language={`${
-                        i18n.language === "fa"
+                        language === "fa"
                           ? "fa-IR"
-                          : i18n.language === "ar"
+                          : language === "ar"
                           ? "ar"
                           : "en"
                       }`}
@@ -194,7 +195,7 @@ const Print = ({
                         filterable={false}
                         reorderable={false}
                         className={`main-grid rk-print ${
-                          i18n.language === "en" ? "ltr" : "rtl"
+                          language === "en" ? "ltr" : "rtl"
                         }`}
                       >
                         {/*{tempColumn.map((column,index)=>(*/}
