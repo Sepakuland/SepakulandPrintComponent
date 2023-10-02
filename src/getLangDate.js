@@ -17,5 +17,7 @@ export function getLangDate(lang,data) {
             date.convert(gregorian);
 
     }
+
+    
     return date.format()
 }
